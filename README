@@ -1,0 +1,17 @@
+This is the readme file with instructions to use the 'Daisy Distributed System Failure Detection'.
+
+Step 1) Compile
+Run the compile.sh script
+$ ./compile.sh
+
+Step 2) Start the node
+Run the startDaisyFDNode.sh script.
+This script has the following options:
+-p : Port Number
+-i : IP Address 
+-t : Node type which can be: 
+     1) "leader"
+     2) "member"
+-h : Host number
+     Each host should be designated a number like '0' or '1' or any integer. When the node is brought down and if it has to join back (reincarnation) then the same host number must be provided 
+$ ./startDaisyFDNode -p <port_no> -i <ip_address> -t <node_type> -h <host_num>
