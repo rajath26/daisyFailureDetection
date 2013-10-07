@@ -685,12 +685,8 @@ int sendFunc()
  
     ptr = hosts;
 
-    int n = 0;
-
     while(1)
     {
-
-        n++;
 
         memset(msgToSend, '\0', LONG_BUF_SZ);
 
@@ -720,12 +716,6 @@ int sendFunc()
 
             // Debug
             printToLog(logF, "SENDOct3 after create_message", msgToSend);
-
-            if ( SUCCESS == n%2 )
-            {
-                printToLog(logF, ipAddress, "Packet loss simulated in this func call");
-                continue;
-            }
 
             // Send UDP packets
             numOfBytesSent = sendUDP(portNo, ipAddr, msgToSend);

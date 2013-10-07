@@ -53,7 +53,7 @@ int recvUDP(char *buffer, int length, struct sockaddr_in hostAddr)
     len = sizeof(hostAddr);
 
     numOfBytesRec = recvfrom(udp, buffer, length, 0, (struct sockaddr *) &hostAddr, &len);
-    //network_to_host(buffer);
+    network_to_host(buffer);
 
   rtn:
     funcExit(logF, ipAddress, "recvUDP", numOfBytesRec);
@@ -90,7 +90,7 @@ int sendUDP(int portNo, char * ipAddr, char * buffer)
     hostAddr.sin_addr.s_addr = inet_addr(ipAddr);
     memset(&(hostAddr.sin_zero), '\0', 8);
                
-    //host_to_network(buffer);
+    host_to_network(buffer);
     numOfBytesSent = sendto(udp, buffer, strlen(buffer), 0, (struct sockaddr *) &hostAddr, sizeof(struct sockaddr));
 
 rtn:
