@@ -34,6 +34,7 @@
 #include <fcntl.h>
 #include <pthread.h>
 #include <sys/time.h>
+#include <signal.h>
 
 /*
  * Macros
@@ -91,6 +92,9 @@ int checkOperationCode(
                        int * op_code,        // Returned op code
                        char * tokenRecMsg    // Returned msg
                       );
+void leaveSystem(
+                 int signum            // Signal
+                );
 
 /*
  * End 

@@ -771,6 +771,28 @@ int heartBeatCheckerFunc()
 
 } // End of heartBeatChecker()
 
+/****************************************************************
+ * NAME: leaveSystem 
+ *
+ * DESCRIPTION: This is the function that provides 
+ *              voluntary leave  
+ *              
+ * PARAMETERS: NONE 
+ *
+ * RETURN: VOID
+ * 
+ ****************************************************************/
+void leaveSystem(int signNum)
+{
+
+    funcEntry(logF, "Leaving Daisy Distributed System", "leaveSystem");
+    
+    close(udp);
+
+    funcExit(logF, "Leaving Daisy Distributed System", "leaveSystem", 0);
+
+} // End of heartBeatChecker()
+
 
 /*
  * Main function
@@ -913,7 +935,16 @@ int main(int argc, char *argv[])
             goto rtn;
         }
     }
-    
+
+    /* 
+     * Set up infrastructure for node to leave
+     * voluntarily
+     */
+    signal(SIGABRT, leaveSystem);
+    if ( errno != SUCCESS )
+    {
+        printf("SIGINT set error %d \n", errno);
+    }
 
     /*
      * Spawn the helper threads
