@@ -35,12 +35,9 @@ do
      esac
 done
 
-echo "\nCompiling.... ... .. . . .\n"
-./compile.sh
-
 if [ $? -eq 0 ]
 then 
-    echo "\nStarting Node\n"
+    echo -e "\nStarting Node\n"
     ./src/daisyFD ${PORT_NO} ${IP_ADDRESS} ${TYPE} ${HOST_NO}
 fi
 
